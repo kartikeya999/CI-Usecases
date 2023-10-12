@@ -18,7 +18,7 @@ template:
           namespace: default
           resources:
             limits:
-              cpu: <+input>
+              cpu: <+input>.default(500Mi)
               memory: <+input>
           annotations: {}
           labels: {}
