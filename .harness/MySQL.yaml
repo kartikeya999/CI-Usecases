@@ -20,9 +20,7 @@ pipeline:
                   spec:
                     connectorRef: account.harnessImage
                     image: mcr.microsoft.com/mssql/server:2022-latest
-                    command: |-
-                      sleep 20
-                      /opt/mssql-tools/bin/sqlcmd -S 127.0.0.1 -U sa -P "test"
+                    command: echo "hi"
                     shell: Sh
                     infrastructure:
                       type: KubernetesDirect
