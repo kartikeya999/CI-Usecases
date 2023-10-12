@@ -18,8 +18,8 @@ template:
           namespace: default
           resources:
             limits:
-              cpu: <+input>.default(500Mi)
-              memory: <+input>
+              cpu: <+input>
+              memory: <+input>.default(500Mi)
           annotations: {}
           labels: {}
           containerSecurityContext:
