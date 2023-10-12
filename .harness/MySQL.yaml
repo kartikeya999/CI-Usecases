@@ -26,7 +26,7 @@ pipeline:
                       type: KubernetesDirect
                       spec:
                         connectorRef: account.k8s
-                        namespace: kartikeya-ng
+                        namespace: kartikeya
                         resources:
                           limits:
                             cpu: "0.5"
