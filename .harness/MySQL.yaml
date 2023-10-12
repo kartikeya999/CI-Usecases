@@ -1,0 +1,44 @@
+pipeline:
+  name: MySQL
+  identifier: MySQL
+  projectIdentifier: CI
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: MySQL
+        identifier: MySQL
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: Container
+                  name: MySQL
+                  identifier: MySQL
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: mcr.microsoft.com/mssql/server:2022-latest
+                    command: echo "hi"
+                    shell: Sh
+                    infrastructure:
+                      type: KubernetesDirect
+                      spec:
+                        connectorRef: account.k8s
+                        namespace: kartikeya-ng
+                        resources:
+                          limits:
+                            cpu: "0.5"
+                            memory: 500Mi
+                        annotations: {}
+                        labels: {}
+                        containerSecurityContext:
+                          capabilities:
+                            drop: []
+                            add: []
+                        nodeSelector: {}
+                    outputVariables: []
+                    envVariables: {}
+                  timeout: 10m
+        tags: {}
