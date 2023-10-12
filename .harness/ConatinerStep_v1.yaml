@@ -1,0 +1,32 @@
+template:
+  name: ConatinerStep
+  identifier: ConatinerStep
+  versionLabel: v1
+  type: Step
+  tags: {}
+  spec:
+    type: Container
+    spec:
+      connectorRef: account.harnessImage
+      image: nginx
+      command: echo "test"
+      shell: Sh
+      infrastructure:
+        type: KubernetesDirect
+        spec:
+          connectorRef: account.k8s
+          namespace: default
+          resources:
+            limits:
+              cpu: <+input>
+              memory: <+input>
+          annotations: {}
+          labels: {}
+          containerSecurityContext:
+            capabilities:
+              drop: []
+              add: []
+          nodeSelector: {}
+      outputVariables: []
+      envVariables: {}
+    timeout: <+input>
