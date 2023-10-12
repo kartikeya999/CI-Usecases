@@ -42,3 +42,5 @@ pipeline:
                     envVariables: {}
                   timeout: 10m
         tags: {}
+  delegateSelectors:
+    - kubernetes-delegate-kartikeya
