@@ -23,9 +23,7 @@ pipeline:
                     command: |-
                       echo "hi"
 
-
-
-                      /opt/mssql-tools/bin/sqlcmd -S 127.0.0.1 -U sa -P "Teeessss@123$456"
+                      /opt/mssql-tools/bin/sqlcmd -S 127.0.0.1 -U sa -P "Teeessss@123$456t"
                     shell: Sh
                     infrastructure:
                       type: KubernetesDirect
