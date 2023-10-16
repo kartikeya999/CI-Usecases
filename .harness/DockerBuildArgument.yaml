@@ -35,7 +35,7 @@ pipeline:
                   spec:
                     connectorRef: account.awsconnector
                     region: us-east-1
-                    account: "915632791698"
+                    account: "123"
                     imageName: kartikeya-test
                     tags:
                       - CI
