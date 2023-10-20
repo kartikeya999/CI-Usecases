@@ -43,7 +43,7 @@ pipeline:
                       spec:
                         connectorRef: account.awsconnector
                         region: us-east-1
-                        bucket: kartikeya
+                        bucket: kartikeya-labs
                         sourcePath: /
                   - step:
                       type: SaveCacheS3
@@ -52,7 +52,7 @@ pipeline:
                       spec:
                         connectorRef: account.awsconnector
                         region: us-east-1
-                        bucket: kartikeya
+                        bucket: kartikeya-labs
                         key: app
                         sourcePaths:
                           - /
