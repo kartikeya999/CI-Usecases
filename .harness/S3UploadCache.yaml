@@ -34,7 +34,9 @@ pipeline:
                     connectorRef: account.harnessImage
                     image: nginx
                     shell: Sh
-                    command: echo "test"
+                    command: |-
+                      echo "test"
+                      touch test.txt
               - parallel:
                   - step:
                       type: S3Upload
@@ -44,7 +46,7 @@ pipeline:
                         connectorRef: account.awsconnector
                         region: us-east-1
                         bucket: kartikeya-labs
-                        sourcePath: s3-test/hello-world.zip
+                        sourcePath: test.txt
                   - step:
                       type: SaveCacheS3
                       name: SaveCacheS3
@@ -55,5 +57,5 @@ pipeline:
                         bucket: kartikeya-labs
                         key: k8s.cluster
                         sourcePaths:
-                          - /k8s.cluster
+                          - test.txt
                         archiveFormat: Tar
