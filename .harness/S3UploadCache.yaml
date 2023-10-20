@@ -1,0 +1,59 @@
+pipeline:
+  name: S3-UploadCache
+  identifier: S3UploadCache
+  projectIdentifier: CI
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: account.GitHub
+        repoName: CI-Usecases
+        build: <+input>
+  stages:
+    - stage:
+        name: S3UploadCache
+        identifier: S3UploadCache
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Run
+                  identifier: Run
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: nginx
+                    shell: Sh
+                    command: echo "test"
+              - parallel:
+                  - step:
+                      type: S3Upload
+                      name: S3Upload
+                      identifier: S3Upload
+                      spec:
+                        connectorRef: account.awsconnector
+                        region: us-east-1
+                        bucket: kartikeya
+                        sourcePath: /
+                  - step:
+                      type: SaveCacheS3
+                      name: SaveCacheS3
+                      identifier: SaveCacheS3
+                      spec:
+                        connectorRef: account.awsconnector
+                        region: us-east-1
+                        bucket: kartikeya
+                        key: "123"
+                        sourcePaths:
+                          - /
+                        archiveFormat: Tar
