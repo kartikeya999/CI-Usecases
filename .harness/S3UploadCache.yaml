@@ -53,7 +53,7 @@ pipeline:
                         connectorRef: account.awsconnector
                         region: us-east-1
                         bucket: kartikeya
-                        key: "123"
+                        key: app
                         sourcePaths:
                           - /
                         archiveFormat: Tar
