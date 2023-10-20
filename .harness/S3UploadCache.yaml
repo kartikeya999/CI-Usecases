@@ -44,7 +44,7 @@ pipeline:
                         connectorRef: account.awsconnector
                         region: us-east-1
                         bucket: kartikeya-labs
-                        sourcePath: s3-test
+                        sourcePath: s3-test/hello-world.zip
                   - step:
                       type: SaveCacheS3
                       name: SaveCacheS3
