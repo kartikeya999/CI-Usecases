@@ -44,7 +44,7 @@ pipeline:
                         connectorRef: account.awsconnector
                         region: us-east-1
                         bucket: kartikeya-labs
-                        sourcePath: /
+                        sourcePath: hello-world.zip
                   - step:
                       type: SaveCacheS3
                       name: SaveCacheS3
@@ -53,7 +53,7 @@ pipeline:
                         connectorRef: account.awsconnector
                         region: us-east-1
                         bucket: kartikeya-labs
-                        key: app
+                        key: k8s.cluster
                         sourcePaths:
-                          - /
+                          - k8s.cluster
                         archiveFormat: Tar
