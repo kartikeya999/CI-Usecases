@@ -57,5 +57,5 @@ pipeline:
                         bucket: kartikeya-labs
                         key: k8s.cluster
                         sourcePaths:
-                          - test.txt
+                          - /harness
                         archiveFormat: Tar
