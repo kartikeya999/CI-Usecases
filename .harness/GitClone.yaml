@@ -1,0 +1,33 @@
+pipeline:
+  name: Git-Clone
+  identifier: GitClone
+  projectIdentifier: CI
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: Git-Clone
+        identifier: GitClone
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: false
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: GitClone
+                  name: GitClone_1
+                  identifier: GitClone_1
+                  spec:
+                    connectorRef: account.GitHub
+                    repoName: gitops-demo
+                    build:
+                      type: commitSha
+                      spec:
+                        commitSha: <+pipeline.variables.commitId>
