@@ -29,6 +29,6 @@ pipeline:
                     repoName: gitops-demo
                     depth: 5
                     build:
-                      type: branch
+                      type: commitSha
                       spec:
-                        branch: main
+                        commitSha: cd1a6567f0f469575aed223607cf8014624452e3
