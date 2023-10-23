@@ -28,6 +28,6 @@ pipeline:
                     connectorRef: account.GitHub
                     repoName: gitops-demo
                     build:
-                      type: commitSha
+                      type: branch
                       spec:
-                        commitSha: <+pipeline.variables.commitId>
+                        branch: main
