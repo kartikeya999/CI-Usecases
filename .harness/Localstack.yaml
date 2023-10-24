@@ -1,0 +1,52 @@
+pipeline:
+  name: Localstack
+  identifier: Localstack
+  projectIdentifier: CSETest1
+  orgIdentifier: kartikeyaorganization
+  tags: {}
+  stages:
+    - stage:
+        name: localstack
+        identifier: localstack
+        type: CI
+        spec:
+          cloneCodebase: false
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: account.k8s
+              namespace: default
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+          sharedPaths:
+            - /var/run
+            - /var/lib/docker
+          caching:
+            enabled: false
+            paths: []
+          execution:
+            steps:
+              - step:
+                  type: Background
+                  name: dind
+                  identifier: dind
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: docker:dind
+                    shell: Sh
+              - step:
+                  type: Run
+                  name: Run
+                  identifier: Run
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: docker
+                    shell: Sh
+                    command: |-
+                      while ! docker ps ;do   
+                            echo "Docker not available yet"  
+                      done  
+                      echo "Docker Service Ready"  
+
+                      docker run --privileged -e DEBUG=1 -e LS_LOG=trace -e EAGER_SERVICE_LOADING=1 -e SERVICES=sqs,s3,secretsmanager -v /var/run/docker.sock:/var/run/docker.sock localstack/localstack:1.2.0
