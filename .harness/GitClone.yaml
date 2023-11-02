@@ -21,6 +21,15 @@ pipeline:
           execution:
             steps:
               - step:
+                  type: Run
+                  name: Run_1
+                  identifier: Run_1
+                  spec:
+                    shell: Sh
+                    command: |-
+                      printenv | grep test1
+                      echo $test1
+              - step:
                   type: GitClone
                   name: GitClone_1
                   identifier: GitClone_1
@@ -32,3 +41,9 @@ pipeline:
                       type: commitSha
                       spec:
                         commitSha: cd1a6567f0f469575aed223607cf8014624452e3
+  variables:
+    - name: test1
+      type: String
+      description: ""
+      required: false
+      value: "123"
