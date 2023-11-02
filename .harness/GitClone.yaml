@@ -28,7 +28,7 @@ pipeline:
                     shell: Sh
                     command: |-
                       printenv | grep test1
-                      echo $test1
+                      #echo $test1
               - step:
                   type: GitClone
                   name: GitClone_1
