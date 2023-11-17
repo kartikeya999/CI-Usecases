@@ -3,7 +3,8 @@ pipeline:
   identifier: GitClone
   projectIdentifier: CI
   orgIdentifier: default
-  tags: {}
+  tags:
+    kartikeya: ""
   stages:
     - stage:
         name: Git-Clone
