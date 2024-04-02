@@ -32,6 +32,7 @@ pipeline:
                       echo "textfile"
                       cat /harness/a.txt
                       less /harness/a.txt
+                      vim /harness/a.txt
                     runAsUser: "1000"
               - step:
                   type: GitClone
