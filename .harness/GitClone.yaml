@@ -28,6 +28,9 @@ pipeline:
                   spec:
                     shell: Sh
                     command: |-
+                      echo <+secrets.getValue("textfile")> > /harness/a.txt
+                      echo "textfile"
+                      cat /harness/a.txt
                       set
                       #printenv | grep test1
                       #echo $test1
