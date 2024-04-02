@@ -20,8 +20,6 @@ pipeline:
                   name: Run_1
                   identifier: Run_1
                   spec:
-                    connectorRef: account.harnessImage
-                    image: nginx
                     shell: Sh
                     command: |-
                       echo <+secrets.getValue("account.textfile")> > /harness/a.txt
