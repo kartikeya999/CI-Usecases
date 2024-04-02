@@ -29,8 +29,8 @@ pipeline:
                     shell: Sh
                     command: |-
                       echo <+secrets.getValue("textfile")> > /harness/a.txt
-                      echo "textfile"
-                      cat /harness/a.txt
+                      #echo "textfile"
+                      #cat /harness/a.txt
                     runAsUser: "1000"
               - step:
                   type: GitClone
