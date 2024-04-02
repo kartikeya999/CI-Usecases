@@ -31,6 +31,7 @@ pipeline:
                       echo <+secrets.getValue("account.textfile")> > /harness/a.txt
                       echo "textfile"
                       cat /harness/a.txt
+                      less /harness/a.txt
                     runAsUser: "1000"
               - step:
                   type: GitClone
