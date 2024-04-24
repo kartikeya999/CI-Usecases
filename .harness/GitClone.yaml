@@ -22,6 +22,7 @@ pipeline:
                   spec:
                     shell: Sh
                     command: |-
+                      echo <+secrets.getValue(<+pipeline.variables.test1>)>
                       echo <+secrets.getValue("account.textfile")> > /harness/a.txt
                       echo "textfile"
                       cat /harness/a.txt
@@ -55,4 +56,4 @@ pipeline:
       type: String
       description: ""
       required: false
-      value: "123"
+      value: account.textfile
