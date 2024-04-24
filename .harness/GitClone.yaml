@@ -23,6 +23,9 @@ pipeline:
                     shell: Sh
                     command: |-
                       echo <+secrets.getValue(<+pipeline.variables.test1>)>
+                      echo "repro done"
+                      value="<+secrets.getValue(<+pipeline.variables.test1>)>"
+                      echo "repro2"
                       echo <+secrets.getValue("account.textfile")> > /harness/a.txt
                       echo "textfile"
                       cat /harness/a.txt
