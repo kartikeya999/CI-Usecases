@@ -20,7 +20,7 @@ pipeline:
                   name: Run_1
                   identifier: Run_1
                   spec:
-                    shell: Sh
+                    shell: Bash
                     command: |-
                       echo "<+secrets.getValue(<+pipeline.variables.test1>)>"
                       echo "repro done"
