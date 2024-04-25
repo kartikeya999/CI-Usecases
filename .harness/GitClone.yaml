@@ -22,7 +22,7 @@ pipeline:
                   spec:
                     shell: Sh
                     command: |-
-                      echo <+secrets.getValue(<+pipeline.variables.test1>)>
+                      echo "<+secrets.getValue(<+pipeline.variables.test1>)>"
                       echo "repro done"
                       value="<+secrets.getValue(<+pipeline.variables.test1>)>"
                       echo "repro2"
