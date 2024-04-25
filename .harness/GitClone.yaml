@@ -27,7 +27,7 @@ pipeline:
                       value="<+secrets.getValue(<+pipeline.variables.test1>)>"
                       echo "repro2"
                       echo <+secrets.getValue("account.textfile")> > /harness/a.txt
-                      echo "textfile"
+                      #echo "textfile"
                     runAsUser: "1000"
               - step:
                   type: GitClone
