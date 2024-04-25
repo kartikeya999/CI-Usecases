@@ -59,4 +59,4 @@ pipeline:
       type: String
       description: ""
       required: false
-      value: 1p_private_key
+      value: p_private_key
