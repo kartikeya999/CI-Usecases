@@ -1,0 +1,37 @@
+pipeline:
+  name: Mac
+  identifier: Mac
+  projectIdentifier: CI
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: account.GitHub
+        repoName: CI-Usecases
+        build: <+input>
+  stages:
+    - stage:
+        name: Mac
+        identifier: Mac
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          caching:
+            enabled: true
+          platform:
+            os: MacOS
+            arch: Arm64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Run_1
+                  identifier: Run_1
+                  spec:
+                    shell: Sh
+                    command: echo Test
