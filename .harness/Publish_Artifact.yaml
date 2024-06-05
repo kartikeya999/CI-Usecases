@@ -1,0 +1,34 @@
+pipeline:
+  name: Publish Artifact
+  identifier: Publish_Artifact
+  projectIdentifier: CI
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: publish
+        identifier: publish
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: false
+          caching:
+            enabled: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Plugin
+                  name: publishArtifact
+                  identifier: publishArtifact
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: plugins/artifact-metadata-publisher
+                    settings:
+                      file_urls: https://api-apakka.eks-poc.preprod.basis.net/assets/devuser/login_bg.jpg,https://api-apakka.eks-poc.preprod.basis.net/assets/devuser/logo.png
+                      artifact_file: artifact.txt
