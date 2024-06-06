@@ -24,7 +24,14 @@ pipeline:
                     connectorRef: account.harnessImage
                     image: alpine/git
                     shell: Sh
-                    command: git clone git@github.com:harness/developer-hub.git
+                    command: |-
+                      cat <<EOF > ${HOME}/.netrc
+                      machine ${DRONE_NETRC_MACHINE}
+                      login ${DRONE_NETRC_USERNAME}
+                      password ${DRONE_NETRC_PASSWORD}
+                      EOF
+
+                      git clone git@github.com:harness/developer-hub.git
           platform:
             os: Linux
             arch: Amd64
