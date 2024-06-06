@@ -14,14 +14,6 @@ pipeline:
           cloneCodebase: false
           caching:
             enabled: true
-          infrastructure:
-            type: KubernetesDirect
-            spec:
-              connectorRef: account.k8s
-              namespace: default
-              automountServiceAccountToken: true
-              nodeSelector: {}
-              os: Linux
           execution:
             steps:
               - step:
@@ -33,3 +25,8 @@ pipeline:
                     image: alpine/git
                     shell: Sh
                     command: git clone git@github.com:harness/developer-hub.git
+          platform:
+            os: Linux
+          runtime:
+            type: Cloud
+            spec: {}
