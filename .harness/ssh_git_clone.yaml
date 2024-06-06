@@ -21,7 +21,7 @@ pipeline:
                   name: Run_1
                   identifier: Run_1
                   spec:
-                    connectorRef: account.DockerPassword
+                    connectorRef: account.harnessImage
                     image: alpine/git
                     shell: Sh
                     command: git clone git@github.com:harness/developer-hub.git
