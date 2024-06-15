@@ -40,4 +40,4 @@ pipeline:
                     command: echo hi
                   when:
                     stageStatus: Success
-                    condition: <+steps.Run_1.output.script_output> != 'true'
+                    condition: <+execution.steps.Run_1.output.outputVariables.skipvar> != 'true'
