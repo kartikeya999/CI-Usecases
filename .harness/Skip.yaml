@@ -28,7 +28,7 @@ pipeline:
                   identifier: Run_1
                   spec:
                     shell: Sh
-                    command: export skipvar = true
+                    command: export skipvar=true
                     outputVariables:
                       - name: skipvar
               - step:
