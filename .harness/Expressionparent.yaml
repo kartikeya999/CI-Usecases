@@ -1,5 +1,5 @@
 pipeline:
-  name: Expression-parent
+  name: Expression-Parent
   identifier: Expressionparent
   projectIdentifier: CI
   orgIdentifier: default
@@ -19,7 +19,7 @@ pipeline:
       type: String
       description: ""
       required: false
-      value: ""
+      value: <+input>
     - name: channel
       type: String
       description: ""
