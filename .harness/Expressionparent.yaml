@@ -20,3 +20,8 @@ pipeline:
       description: ""
       required: false
       value: ""
+    - name: channel
+      type: String
+      description: ""
+      required: false
+      value: <+input>
