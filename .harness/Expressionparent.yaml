@@ -1,0 +1,22 @@
+pipeline:
+  name: Expression-parent
+  identifier: Expressionparent
+  projectIdentifier: CI
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: child
+        identifier: child
+        description: ""
+        type: Pipeline
+        spec:
+          org: default
+          pipeline: ExpressionChild
+          project: CI
+  variables:
+    - name: username
+      type: String
+      description: ""
+      required: false
+      value: ""
