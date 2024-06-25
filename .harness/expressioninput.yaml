@@ -1,0 +1,14 @@
+inputSet:
+  name: expression-input
+  identifier: expressioninput
+  orgIdentifier: default
+  projectIdentifier: CI
+  pipeline:
+    identifier: Expressionparent
+    variables:
+      - name: username
+        type: String
+        value: <+input>
+      - name: channel
+        type: String
+        value: <+input>
