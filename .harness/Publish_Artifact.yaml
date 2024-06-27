@@ -35,6 +35,7 @@ pipeline:
                     command: google-chrome --version
           platform:
             os: Linux
+            arch: Amd64
           runtime:
             type: Cloud
             spec: {}
