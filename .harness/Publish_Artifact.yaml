@@ -33,9 +33,11 @@ pipeline:
                   spec:
                     shell: Sh
                     command: google-chrome --version
-          platform:
-            os: Linux
-            arch: Amd64
-          runtime:
-            type: Cloud
-            spec: {}
+          infrastructure:
+            type: VM
+            spec:
+              type: Pool
+              spec:
+                poolName: ubuntu-ci-pool
+                harnessImageConnectorRef: account.harnessImage
+                os: Linux
