@@ -26,13 +26,6 @@ pipeline:
                     settings:
                       file_urls: https://api-apakka.eks-poc.preprod.basis.net/assets/devuser/login_bg.jpg,https://api-apakka.eks-poc.preprod.basis.net/assets/devuser/logo.png
                       artifact_file: artifact.txt
-              - step:
-                  type: Run
-                  name: Run_1
-                  identifier: Run_1
-                  spec:
-                    shell: Sh
-                    command: google-chrome --version
           infrastructure:
             type: VM
             spec:
