@@ -22,15 +22,8 @@ pipeline:
                   spec:
                     connectorRef: account.harnessImage
                     image: nginx
-                    shell: Bash
-                    command: |-
-                      echo "<+secrets.getValue(<+pipeline.variables.test1>)>"
-                      echo "repro done"
-                      value="<+secrets.getValue(<+pipeline.variables.test1>)>"
-                      echo "repro2"
-                      echo <+secrets.getValue("account.textfile")> > /harness/a.txt
-                      #echo "textfile"
-                    runAsUser: "1000"
+                    shell: Sh
+                    command: echo hi
               - step:
                   type: GitClone
                   name: GitClone_1
