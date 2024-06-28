@@ -12,7 +12,7 @@ pipeline:
         description: ""
         type: CI
         spec:
-          cloneCodebase: false
+          cloneCodebase: true
           execution:
             steps:
               - step:
@@ -20,6 +20,8 @@ pipeline:
                   name: Run_1
                   identifier: Run_1
                   spec:
+                    connectorRef: account.harnessImage
+                    image: nginx
                     shell: Bash
                     command: |-
                       echo "<+secrets.getValue(<+pipeline.variables.test1>)>"
@@ -41,12 +43,20 @@ pipeline:
                       type: commitSha
                       spec:
                         commitSha: cd1a6567f0f469575aed223607cf8014624452e3
-          platform:
-            os: Linux
-            arch: Arm64
-          runtime:
-            type: Cloud
-            spec: {}
+                  when:
+                    stageStatus: Success
+                    condition: "false"
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: account.k8s
+              namespace: harness-delegate-ng
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+          caching:
+            enabled: false
+            paths: []
         variables:
           - name: test2
             type: String
@@ -59,3 +69,11 @@ pipeline:
       description: ""
       required: false
       value: p_private_key
+  properties:
+    ci:
+      codebase:
+        connectorRef: account.GitHub
+        repoName: CI-Usecases
+        build: <+input>
+  delegateSelectors:
+    - k8s-delegate-ng
