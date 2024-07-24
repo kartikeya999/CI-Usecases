@@ -32,7 +32,7 @@ pipeline:
                       docker pull mcr.microsoft.com/windows/nanoserver:10.0.20348.1787-amd64
                       docker inspect -f "{{ .Size }}" mcr.microsoft.com/windows/nanoserver:10.0.20348.1787-amd64
 
-                      docker pull mcr.microsoft.com/windows:1809-amd64
-                      docker inspect -f "{{ .Size }}" mcr.microsoft.com/windows:1809-amd64
+                      docker pull mcr.microsoft.com/windows:10.0.17763.4974-amd64
+                      docker inspect -f "{{ .Size }}" mcr.microsoft.com/windows:10.0.17763.4974-amd64
 
                       docker image ls
