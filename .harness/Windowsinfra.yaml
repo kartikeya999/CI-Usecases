@@ -30,6 +30,8 @@ pipeline:
                     shell: Sh
                     command: |-
                       docker pull mcr.microsoft.com/windows/servercore:ltsc2022-amd64
+                      docker pull mcr.microsoft.com/windows/servercore:1809-amd64
+
 
                       docker image ls
               - step:
