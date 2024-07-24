@@ -1,0 +1,36 @@
+pipeline:
+  name: Windows-infra
+  identifier: Windowsinfra
+  projectIdentifier: CI
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: WindowsInfra
+        identifier: WindowsInfra
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: false
+          caching:
+            enabled: true
+          platform:
+            os: Windows
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Run_1
+                  identifier: Run_1
+                  spec:
+                    shell: Sh
+                    command: |-
+                      docker pull mcr.microsoft.com/windows/nanoserver:10.0.20348.1787-amd64
+
+                      docker pull mcr.microsoft.com/windows:1809-amd64
+
+                      docker images
