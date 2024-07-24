@@ -24,6 +24,16 @@ pipeline:
             steps:
               - step:
                   type: Run
+                  name: Run_2
+                  identifier: Run_2
+                  spec:
+                    shell: Sh
+                    command: |-
+                      docker pull mcr.microsoft.com/windows/servercore:ltsc2022-amd64
+
+                      docker image ls
+              - step:
+                  type: Run
                   name: Run_1
                   identifier: Run_1
                   spec:
