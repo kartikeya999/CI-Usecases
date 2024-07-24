@@ -30,7 +30,9 @@ pipeline:
                     shell: Sh
                     command: |-
                       docker pull mcr.microsoft.com/windows/nanoserver:10.0.20348.1787-amd64
+                      docker inspect -image mcr.microsoft.com/windows/nanoserver:10.0.20348.1787-amd64 --format='{{.Size}}'
 
                       docker pull mcr.microsoft.com/windows:1809-amd64
+                      docker inspect -image mcr.microsoft.com/windows:1809-amd64 --format='{{.Size}}'
 
                       docker images
