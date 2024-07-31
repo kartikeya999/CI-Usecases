@@ -1,44 +1,43 @@
----
 pipeline:
-  projectIdentifier: "CI"
-  orgIdentifier: "default"
+  projectIdentifier: CI
+  orgIdentifier: default
   tags: {}
   stages:
-  - stage:
-      name: "publish"
-      identifier: "publish"
-      description: ""
-      type: "CI"
-      spec:
-        cloneCodebase: false
-        caching:
-          enabled: true
-        execution:
-          steps:
-          - step:
-              type: "Run"
-              name: "Run_1"
-              identifier: "Run_1"
-              spec:
-                shell: "Sh"
-                command: "echo test"
-          - step:
-              type: "Plugin"
-              name: "publishArtifact"
-              identifier: "publishArtifact"
-              spec:
-                connectorRef: "account.harnessImage"
-                image: "plugins/artifact-metadata-publisher"
-                settings:
-                  file_urls: "https://api-apakka.eks-poc.preprod.basis.net/assets/devuser/login_bg.jpg,https://api-apakka.eks-poc.preprod.basis.net/assets/devuser/logo.png"
-                  artifact_file: "artifact.txt"
-        infrastructure:
-          type: "VM"
-          spec:
-            type: "Pool"
+    - stage:
+        name: publish
+        identifier: publish
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: false
+          caching:
+            enabled: true
+          execution:
+            steps:
+              - step:
+                  type: Plugin
+                  name: publishArtifact
+                  identifier: publishArtifact
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: plugins/artifact-metadata-publisher
+                    settings:
+                      file_urls: https://api-apakka.eks-poc.preprod.basis.net/assets/devuser/login_bg.jpg,https://api-apakka.eks-poc.preprod.basis.net/assets/devuser/logo.png
+                      artifact_file: artifact.txt
+              - step:
+                  type: Run
+                  name: Run_1
+                  identifier: Run_1
+                  spec:
+                    shell: Sh
+                    command: exit 1
+          infrastructure:
+            type: VM
             spec:
-              poolName: "ubuntu-ci-pool"
-              harnessImageConnectorRef: "account.harnessImage"
-              os: "Windows"
-  identifier: "VMWindowsInfra"
-  name: "VM-Windows-Infra"
+              type: Pool
+              spec:
+                poolName: ubuntu-ci-pool
+                harnessImageConnectorRef: account.harnessImage
+                os: Windows
+  identifier: VMWindowsInfra
+  name: VM-Windows-Infra
