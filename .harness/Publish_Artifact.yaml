@@ -17,6 +17,13 @@ pipeline:
           execution:
             steps:
               - step:
+                  type: Run
+                  name: Run_1
+                  identifier: Run_1
+                  spec:
+                    shell: Sh
+                    command: echo test
+              - step:
                   type: Plugin
                   name: publishArtifact
                   identifier: publishArtifact
