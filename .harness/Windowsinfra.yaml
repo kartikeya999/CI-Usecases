@@ -1,5 +1,5 @@
 pipeline:
-  name: Windows-infra
+  name: Windows-infra-Cloud
   identifier: Windowsinfra
   projectIdentifier: CI
   orgIdentifier: default
