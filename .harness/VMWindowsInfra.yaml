@@ -38,6 +38,6 @@ pipeline:
               spec:
                 poolName: ubuntu-ci-pool
                 harnessImageConnectorRef: account.harnessImage
-                os: Windows
+                os: Linux
   identifier: VMWindowsInfra
   name: VM-Windows-Infra
