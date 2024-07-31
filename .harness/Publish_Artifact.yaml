@@ -40,4 +40,4 @@ pipeline:
               spec:
                 poolName: ubuntu-ci-pool
                 harnessImageConnectorRef: account.harnessImage
-                os: Linux
+                os: Windows
