@@ -54,7 +54,7 @@ pipeline:
                   type: EmptyDir
                   spec:
                     medium: Memory
-                    size: <+stage.variables.test>
+                    size: <+stage.variables.test2>
               automountServiceAccountToken: true
               nodeSelector: {}
               os: Linux
