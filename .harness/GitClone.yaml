@@ -44,6 +44,17 @@ pipeline:
             spec:
               connectorRef: account.k8s
               namespace: harness-delegate-ng
+              volumes:
+                - mountPath: /shared-data
+                  type: PersistentVolumeClaim
+                  spec:
+                    claimName: test
+                    readOnly: false
+                - mountPath: /dev
+                  type: EmptyDir
+                  spec:
+                    medium: Memory
+                    size: <+stage.variables.test2>
               automountServiceAccountToken: true
               nodeSelector: {}
               os: Linux
