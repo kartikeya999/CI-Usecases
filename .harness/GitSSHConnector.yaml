@@ -8,8 +8,10 @@ pipeline:
     ci:
       codebase:
         connectorRef: account.GithubSSH
-        repoName: gitops2-demo
+        repoName: gitops2-demo.git
         build: <+input>
+        sparseCheckout: []
+        lfs: true
   stages:
     - stage:
         name: git-ssh-windows
