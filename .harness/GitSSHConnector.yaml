@@ -34,5 +34,5 @@ pipeline:
             spec:
               type: Pool
               spec:
-                poolName: windows-ci-pool
+                poolName: ubuntu-ci-pool
                 os: Windows
