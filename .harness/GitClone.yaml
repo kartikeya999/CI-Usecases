@@ -16,15 +16,6 @@ pipeline:
           execution:
             steps:
               - step:
-                  type: Run
-                  name: Run_1
-                  identifier: Run_1
-                  spec:
-                    connectorRef: account.harnessImage
-                    image: nginx
-                    shell: Sh
-                    command: echo hi
-              - step:
                   type: GitClone
                   name: GitClone_1
                   identifier: GitClone_1
@@ -39,22 +30,23 @@ pipeline:
                   when:
                     stageStatus: Success
                     condition: "false"
+              - step:
+                  type: Run
+                  name: Run_1
+                  identifier: Run_1
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: nginx
+                    shell: Sh
+                    command: |-
+                      echo hi
+                      sleep 93600
+                  timeout: 1d 1h
           infrastructure:
             type: KubernetesDirect
             spec:
               connectorRef: account.k8s
               namespace: harness-delegate-ng
-              volumes:
-                - mountPath: /shared-data
-                  type: PersistentVolumeClaim
-                  spec:
-                    claimName: test
-                    readOnly: false
-                - mountPath: /dev
-                  type: EmptyDir
-                  spec:
-                    medium: Memory
-                    size: <+stage.variables.test2>
               automountServiceAccountToken: true
               nodeSelector: {}
               os: Linux
