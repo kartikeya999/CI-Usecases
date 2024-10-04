@@ -71,5 +71,3 @@ pipeline:
         connectorRef: account.GitHub
         repoName: CI-Usecases
         build: <+input>
-  delegateSelectors:
-    - k8s-delegate-ng
