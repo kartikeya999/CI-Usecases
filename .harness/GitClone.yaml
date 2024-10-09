@@ -58,6 +58,9 @@ pipeline:
               namespace: harness-delegate-ng
               automountServiceAccountToken: true
               nodeSelector: {}
+              containerSecurityContext:
+                privileged: false
+                allowPrivilegeEscalation: false
               os: Linux
           caching:
             enabled: false
