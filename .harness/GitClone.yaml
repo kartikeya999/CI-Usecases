@@ -16,6 +16,15 @@ pipeline:
           execution:
             steps:
               - step:
+                  type: Background
+                  name: Background_1
+                  identifier: Background_1
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: docker:dind
+                    shell: Sh
+                    privileged: true
+              - step:
                   type: GitClone
                   name: GitClone_1
                   identifier: GitClone_1
