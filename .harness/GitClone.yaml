@@ -57,7 +57,7 @@ pipeline:
               automountServiceAccountToken: true
               nodeSelector: {}
               containerSecurityContext:
-                privileged: true
+                privileged: false
                 allowPrivilegeEscalation: true
               os: Linux
           caching:
