@@ -22,8 +22,8 @@ pipeline:
               automountServiceAccountToken: true
               nodeSelector: {}
               containerSecurityContext:
-                privileged: true
-                allowPrivilegeEscalation: true
+                privileged: false
+                allowPrivilegeEscalation: false
               os: Linux
           execution:
             steps:
