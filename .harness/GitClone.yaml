@@ -47,9 +47,7 @@ pipeline:
                     connectorRef: account.harnessImage
                     image: nginx
                     shell: Sh
-                    command: |-
-                      echo hi
-                      sleep 93600
+                    command: echo hi
                   timeout: 1d 1h
           infrastructure:
             type: KubernetesDirect
