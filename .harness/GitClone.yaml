@@ -70,7 +70,7 @@ pipeline:
       type: String
       description: ""
       required: false
-      value: 500Mi
+      value: <+input>
   properties:
     ci:
       codebase:
