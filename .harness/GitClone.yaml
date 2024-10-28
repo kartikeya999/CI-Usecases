@@ -16,15 +16,6 @@ pipeline:
           execution:
             steps:
               - step:
-                  type: Background
-                  name: Background_1
-                  identifier: Background_1
-                  spec:
-                    connectorRef: account.harnessImage
-                    image: docker:dind
-                    shell: Sh
-                    privileged: true
-              - step:
                   type: GitClone
                   name: GitClone_1
                   identifier: GitClone_1
@@ -75,9 +66,18 @@ pipeline:
       description: ""
       required: false
       value: p_private_key
+    - name: limit
+      type: String
+      description: ""
+      required: false
+      value: 500Mi
   properties:
     ci:
       codebase:
         connectorRef: account.GitHub
         repoName: CI-Usecases
         build: <+input>
+        sparseCheckout: []
+        resources:
+          limits:
+            memory: <+pipeline.variables.limit>
