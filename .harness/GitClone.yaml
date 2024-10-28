@@ -16,6 +16,20 @@ pipeline:
           execution:
             steps:
               - step:
+                  type: Run
+                  name: Run_1
+                  identifier: Run_1
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: nginx
+                    shell: Sh
+                    command: echo $test2
+                    outputVariables:
+                      - name: test2
+                        type: Secret
+                        value: <+input>
+                  timeout: 1d 1h
+              - step:
                   type: GitClone
                   name: GitClone_1
                   identifier: GitClone_1
@@ -29,16 +43,6 @@ pipeline:
                         commitSha: cd1a6567f0f469575aed223607cf8014624452e3
                   when:
                     stageStatus: Success
-              - step:
-                  type: Run
-                  name: Run_1
-                  identifier: Run_1
-                  spec:
-                    connectorRef: account.harnessImage
-                    image: nginx
-                    shell: Sh
-                    command: echo hi
-                  timeout: 1d 1h
           infrastructure:
             type: KubernetesDirect
             spec:
