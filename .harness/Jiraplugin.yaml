@@ -1,0 +1,31 @@
+pipeline:
+  name: Jira-Plugin
+  identifier: JiraPlugin
+  projectIdentifier: CI
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: Jira-plugin
+        identifier: Jiraplugin
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: false
+          caching:
+            enabled: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Plugin
+                  name: Plugin_1
+                  identifier: Plugin_1
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: plugins/jira:latest
