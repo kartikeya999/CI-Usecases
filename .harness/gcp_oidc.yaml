@@ -1,0 +1,39 @@
+pipeline:
+  name: gcp oidc
+  identifier: gcp_oidc
+  projectIdentifier: CI
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: gcp oidc
+        identifier: gcp_oidc
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: false
+          caching:
+            enabled: true
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: account.k8s
+              namespace: harness-delegate-ng
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+          execution:
+            steps:
+              - step:
+                  type: Plugin
+                  name: Plugin_1
+                  identifier: Plugin_1
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: plugins/gcp-oidc:latest
+                    settings:
+                      project_Id: "1006590886849"
+                      pool_Id: wif-d-harness-pool
+                      service_account_email_id: sa-d-deployer@gfp-p-harness.iam.gserviceaccount.com
+                      provider_Id: wif-d-harness-provider
+                      create_application_credentials_file: "true"
