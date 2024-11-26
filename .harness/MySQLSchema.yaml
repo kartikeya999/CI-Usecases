@@ -1,0 +1,48 @@
+pipeline:
+  name: MySQL-Schema
+  identifier: MySQLSchema
+  projectIdentifier: CI
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: MySQL
+        identifier: MySQL
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: false
+          caching:
+            enabled: true
+          buildIntelligence:
+            enabled: true
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: account.k8s
+              namespace: default
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+          execution:
+            steps:
+              - step:
+                  type: Background
+                  name: Background_1
+                  identifier: Background_1
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: mysql
+                    shell: Sh
+              - step:
+                  type: Run
+                  name: Run_1
+                  identifier: Run_1
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: nginx
+                    shell: Sh
+                    command: |-
+                      sudo service mysql status
+
+                      ps aux | grep mysql
