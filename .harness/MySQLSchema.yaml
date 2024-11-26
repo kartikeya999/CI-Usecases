@@ -43,6 +43,6 @@ pipeline:
                     image: nginx
                     shell: Sh
                     command: |-
-                      sudo service mysql status
+                      service mysql status
 
                       ps aux | grep mysql
