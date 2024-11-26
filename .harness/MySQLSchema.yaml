@@ -43,6 +43,6 @@ pipeline:
                     image: nginx
                     shell: Sh
                     command: |-
-                      systemctl status mysql
-
+                      netstat -tulnp | grep 3306
                       ps aux | grep mysql
+                      systemctl status mysql
