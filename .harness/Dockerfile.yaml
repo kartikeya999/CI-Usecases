@@ -33,7 +33,7 @@ pipeline:
                   spec:
                     connectorRef: account.harnessImage
                     image: docker:dind
-                    shell: Sh
+                    shell: Bash
                     command: |-
                       FROM artifactorycloud.ual.com/v-docker/node:16.20.2
 
