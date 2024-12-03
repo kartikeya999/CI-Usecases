@@ -56,10 +56,8 @@ pipeline:
 
                       ls
 
-                      systemctl is-active docker
-                      status docker
-                      systemctl status docker
 
+                      status docker
 
                       docker build dockerfile
 
