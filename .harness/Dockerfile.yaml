@@ -30,6 +30,33 @@ pipeline:
           execution:
             steps:
               - step:
+                  type: Run
+                  name: Run_2
+                  identifier: Run_2
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: docker:dind
+                    shell: Sh
+                    command: |-
+                      touch dockerfile
+                      cat > dockerfile <<EOF
+                      FROM node:16.20.2
+                      RUN apt-get update
+                      RUN apt upgrade
+                      EOF
+
+                      ls
+              - step:
+                  type: BuildAndPushDockerRegistry
+                  name: BuildAndPushDockerRegistry_1
+                  identifier: BuildAndPushDockerRegistry_1
+                  spec:
+                    connectorRef: account.harnessImage
+                    repo: harness
+                    tags:
+                      - latest
+                    caching: true
+              - step:
                   type: Background
                   name: Background_1
                   identifier: Background_1
