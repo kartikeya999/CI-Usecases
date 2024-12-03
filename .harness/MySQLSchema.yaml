@@ -23,8 +23,6 @@ pipeline:
                   name: Run_1
                   identifier: Run_1
                   spec:
-                    connectorRef: account.harnessImage
-                    image: nginx
                     shell: Sh
                     command: curl -v https://registry1.dso.mil/v2/
           platform:
