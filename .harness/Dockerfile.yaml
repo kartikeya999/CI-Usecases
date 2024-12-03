@@ -1,0 +1,41 @@
+pipeline:
+  name: Dockerfile
+  identifier: Dockerfile
+  projectIdentifier: CI
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: Dockerfile
+        identifier: Dockerfile
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: false
+          caching:
+            enabled: true
+          buildIntelligence:
+            enabled: true
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: account.k8s
+              namespace: default
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Run_1
+                  identifier: Run_1
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: docker:dind
+                    shell: Sh
+                    command: |-
+                      FROM artifactorycloud.ual.com/v-docker/node:16.20.2
+
+                      RUN apt-get update
+                      RUN apt upgrade
