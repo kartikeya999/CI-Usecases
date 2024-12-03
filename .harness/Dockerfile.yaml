@@ -35,7 +35,7 @@ pipeline:
                   identifier: Background_1
                   spec:
                     connectorRef: account.harnessImage
-                    image: dind
+                    image: docker:dind
                     shell: Sh
                     privileged: true
               - step:
