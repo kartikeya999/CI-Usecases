@@ -35,6 +35,8 @@ pipeline:
                     image: docker:dind
                     shell: Sh
                     command: |-
+                      docker login artifactorycloud.ual.com --username "<+secrets.getValue('account.jfrog-username')>" --password <+secrets.getValue('account.jfrog-passowrd')>
+
                       FROM artifactorycloud.ual.com/v-docker/node:16.20.2
 
                       RUN apt-get update
