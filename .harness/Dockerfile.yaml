@@ -34,6 +34,7 @@ pipeline:
                     connectorRef: account.harnessImage
                     image: docker:dind
                     shell: Sh
+                    privileged: true
               - step:
                   type: Run
                   name: Run_1
@@ -55,3 +56,4 @@ pipeline:
                       docker build .
 
                       #docker login artifactorycloud.ual.com --username "<+secrets.getValue('account.jfrog-username')>" --password <+secrets.getValue('account.jfrog-passowrd')>
+                    privileged: true
