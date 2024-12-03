@@ -23,6 +23,8 @@ pipeline:
               namespace: default
               automountServiceAccountToken: true
               nodeSelector: {}
+              containerSecurityContext:
+                privileged: true
               os: Linux
           execution:
             steps:
