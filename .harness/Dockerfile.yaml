@@ -61,5 +61,3 @@ pipeline:
 
                       #docker login artifactorycloud.ual.com --username "<+secrets.getValue('account.jfrog-username')>" --password <+secrets.getValue('account.jfrog-passowrd')>
                     privileged: true
-                    envVariables:
-                      MY_VARIABLE: test
