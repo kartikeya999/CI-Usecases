@@ -1,0 +1,129 @@
+pipeline:
+  name: Snapshotter
+  identifier: Snapshotter
+  projectIdentifier: CI
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: Snapshotter
+        identifier: Snapshotter
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: false
+          caching:
+            enabled: true
+          buildIntelligence:
+            enabled: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Run_1
+                  identifier: Run_1
+                  spec:
+                    shell: Sh
+                    command: |-
+                      # Enable experimental features by modifying the daemon configuration
+                      #mkdir -p /etc/docker
+                      # echo '{
+                      #   "debug": true,
+                      #   "experimental": true,
+                      #   "features": {
+                      #     "containerd-snapshotter": true
+                      #   }
+                      # }' > /etc/docker/daemon.json
+
+                      # systemctl restart docker
+
+                      #
+                      # echo '{
+                      #   "debug": true,
+                      #   "experimental": true,
+                      #   "features": {
+                      #     "containerd-snapshotter": true,
+                      #     "buildkit": true
+                      #   }
+                      # }' > /etc/docker/daemon.json
+
+                      # systemctl restart docker
+
+                      # Verify that the Docker daemon is running
+                      docker info -f '{{ .DriverStatus }}'
+
+                      cat /etc/*release*
+
+                      # add curl
+                      apk add curl
+
+                      # Install copa cli
+                      curl -L https://github.com/project-copacetic/copacetic/releases/download/v0.9.0/copa_0.9.0_linux_amd64.tar.gz | tar xz -C /usr/local/bin
+
+                      which copa
+                      copa -v
+
+                      # # Buildkit in a container
+                      # export BUILDKIT_VERSION=v0.12.4
+                      # docker run \
+                      #     --detach \
+                      #     --rm \
+                      #     --privileged \
+                      #     --name buildkitd \
+                      #     --entrypoint buildkitd \
+                      #     "moby/buildkit:$BUILDKIT_VERSION"
+
+                      export BUILDKIT_VERSION=v0.12.4
+                      export BUILDKIT_PORT=8888
+                      docker run \
+                          --detach \
+                          --rm \
+                          --privileged \
+                          -p 127.0.0.1:$BUILDKIT_PORT:$BUILDKIT_PORT/tcp \
+                          --name buildkitd \
+                          --entrypoint buildkitd \
+                          "moby/buildkit:$BUILDKIT_VERSION" \
+                          --addr tcp://0.0.0.0:$BUILDKIT_PORT
+
+                      # docker buildx create --name demo
+
+                      # docker buildx create --name demo2 --append
+
+
+                      sleep 10
+                      docker ps -a
+
+                      export IMAGE=portal-fe
+                      export TAG=latest
+
+                      #docker buildx build --load -t portal-fe:latest .
+                      #docker build -t portal-fe:latest .
+                      docker buildx build --load --tag $IMAGE:$TAG .
+                      docker image ls
+
+                      #install trivy
+                      curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.18.3
+                      #trivy scan image
+                      # trivy image --vuln-type os --ignore-unfixed $IMAGE:$TAG | grep Total
+                      # trivy image --vuln-type os --ignore-unfixed -f json -o $IMAGE-$TAG.json $IMAGE:$TAG
+
+                      #copa patch command
+                      # copa patch -i $IMAGE
+                      # docker buildx create --name demo
+
+                       copa patch -i portal-fe:latest -t patched -a tcp://0.0.0.0:$BUILDKIT_PORT --timeout 30m
+
+                      # copa patch -i portal-fe:latest -t patched --addr buildx://demo
+                      # copa patch -i $IMAGE -t patched --addr buildx://demo
+                      # copa patch -i portal-fe:latest -t patched --addr buildx://demo2
+                      # copa patch -i $IMAGE -t patched --addr buildx://demo2
+
+
+                      #copa patch -i portal-fe:latest -t patched --addr docker-container://buildkitd
+                      docker image ls
