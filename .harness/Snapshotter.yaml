@@ -11,9 +11,10 @@ pipeline:
         description: ""
         type: CI
         spec:
-          cloneCodebase: false
+          cloneCodebase: true
           caching:
             enabled: true
+            paths: []
           buildIntelligence:
             enabled: true
           platform:
@@ -127,3 +128,10 @@ pipeline:
 
                       #copa patch -i portal-fe:latest -t patched --addr docker-container://buildkitd
                       docker image ls
+  properties:
+    ci:
+      codebase:
+        connectorRef: account.GitHub
+        repoName: CI-Usecases
+        build: <+input>
+        sparseCheckout: []
