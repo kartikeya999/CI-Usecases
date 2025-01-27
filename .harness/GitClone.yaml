@@ -25,20 +25,6 @@ pipeline:
                     shell: Sh
                     command: echo $test2
                   timeout: 1d 1h
-              - step:
-                  type: GitClone
-                  name: GitClone_1
-                  identifier: GitClone_1
-                  spec:
-                    connectorRef: account.GitHub
-                    repoName: gitops-demo
-                    depth: 5
-                    build:
-                      type: commitSha
-                      spec:
-                        commitSha: cd1a6567f0f469575aed223607cf8014624452e3
-                  when:
-                    stageStatus: Success
           infrastructure:
             type: KubernetesDirect
             spec:
