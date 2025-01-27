@@ -24,10 +24,6 @@ pipeline:
                     image: ubuntu
                     shell: Sh
                     command: echo $test2
-                    outputVariables:
-                      - name: test2
-                        type: Secret
-                        value: <+input>
                   timeout: 1d 1h
               - step:
                   type: GitClone
