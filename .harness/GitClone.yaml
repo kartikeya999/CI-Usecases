@@ -57,12 +57,6 @@ pipeline:
           caching:
             enabled: false
             paths: []
-        variables:
-          - name: test2
-            type: String
-            description: ""
-            required: false
-            value: "456"
   variables:
     - name: test1
       type: String
