@@ -1,26 +1,15 @@
 inputSet:
   name: test2
+  tags: {}
   identifier: test2
   orgIdentifier: default
   projectIdentifier: CI
   pipeline:
     identifier: GitClone
-    stages:
-      - stage:
-          identifier: GitClone
-          type: CI
-          spec:
-            execution:
-              steps:
-                - step:
-                    identifier: Run_1
-                    type: Run
-                    spec:
-                      outputVariables:
-                        - name: test2
-                          type: Secret
-                          value: <+input>
     properties:
       ci:
         codebase:
-          build: <+input>
+          build:
+            type: branch
+            spec:
+              branch: main
