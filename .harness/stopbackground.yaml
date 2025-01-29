@@ -38,6 +38,8 @@ pipeline:
                       docker rm $(docker ps -a -q)
 
                       sleep 200
+
+                      docker ps -a
           platform:
             os: Linux
             arch: Amd64
