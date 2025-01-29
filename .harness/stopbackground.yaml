@@ -20,7 +20,7 @@ pipeline:
             type: KubernetesDirect
             spec:
               connectorRef: account.k8s
-              namespace: default
+              namespace: harness-delegate-ng
               automountServiceAccountToken: true
               nodeSelector: {}
               os: Linux
