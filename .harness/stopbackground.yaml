@@ -33,11 +33,12 @@ pipeline:
                   spec:
                     shell: Sh
                     command: |-
+                      docker ps -a
                       docker stop redis
                       docker rm redis
           platform:
             os: Linux
-            arch: Arm64
+            arch: Amd64
           runtime:
             type: Cloud
             spec: {}
