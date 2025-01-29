@@ -16,14 +16,6 @@ pipeline:
             enabled: true
           buildIntelligence:
             enabled: true
-          infrastructure:
-            type: KubernetesDirect
-            spec:
-              connectorRef: account.k8s
-              namespace: harness-delegate-ng
-              automountServiceAccountToken: true
-              nodeSelector: {}
-              os: Linux
           execution:
             steps:
               - step:
@@ -45,3 +37,9 @@ pipeline:
                     command: |-
                       docker stop redis
                       docker rm redis
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
