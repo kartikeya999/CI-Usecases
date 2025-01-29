@@ -34,11 +34,12 @@ pipeline:
                     shell: Sh
                     command: |-
                       docker ps -a
+                      sleep 100
                       docker stop $(docker ps -a -q)
                       docker rm $(docker ps -a -q)
 
 
-                      sleep 100
+                      sleep 10
 
                       docker ps -a
 
