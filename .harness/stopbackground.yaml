@@ -34,8 +34,8 @@ pipeline:
                     shell: Sh
                     command: |-
                       docker ps -a
-                      docker stop redis
-                      docker rm redis
+                      docker stop $(docker ps -a -q)
+                      docker rm $(docker ps -a -q)
           platform:
             os: Linux
             arch: Amd64
