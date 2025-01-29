@@ -38,7 +38,7 @@ pipeline:
                       docker rm $(docker ps -a -q)
 
 
-                      sleep 10
+                      sleep 100
 
                       docker ps -a
 
