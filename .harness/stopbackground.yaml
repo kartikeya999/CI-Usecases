@@ -36,6 +36,8 @@ pipeline:
                       docker ps -a
                       docker stop $(docker ps -a -q)
                       docker rm $(docker ps -a -q)
+
+                      sleep 200
           platform:
             os: Linux
             arch: Amd64
