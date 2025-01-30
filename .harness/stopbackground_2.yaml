@@ -1,0 +1,52 @@
+pipeline:
+  projectIdentifier: CI
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: stop
+        identifier: stop
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: false
+          caching:
+            enabled: true
+          buildIntelligence:
+            enabled: true
+          execution:
+            steps:
+              - step:
+                  type: Background
+                  name: Background_1
+                  identifier: Background_1
+                  spec:
+                    connectorRef: account.DockerPassword
+                    image: redis
+                    shell: Sh
+              - step:
+                  type: Run
+                  name: Run_1
+                  identifier: Run_1
+                  spec:
+                    shell: Sh
+                    command: |-
+                      docker ps -a
+                      sleep 100
+                      docker stop $(docker ps -a -q)
+                      docker rm $(docker ps -a -q)
+
+
+                      sleep 10
+
+                      docker ps -a
+
+                      sleep 200
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+  identifier: stopbackground_2
+  name: stop-background 2
