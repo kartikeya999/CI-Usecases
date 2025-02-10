@@ -54,6 +54,6 @@ pipeline:
         sparseCheckout: []
         resources:
           limits:
-            cpu: 400m
-            memory: 500Mi
+            cpu: 1000m
+            memory: 2000Mi
   allowStageExecutions: true
