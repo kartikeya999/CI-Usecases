@@ -1,0 +1,14 @@
+inputSet:
+  name: inputs-tr
+  identifier: inputstr
+  orgIdentifier: default
+  projectIdentifier: CI
+  pipeline:
+    identifier: GitClone
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>
