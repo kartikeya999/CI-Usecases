@@ -21,9 +21,9 @@ pipeline:
                   identifier: Run_1
                   spec:
                     connectorRef: Registry
-                    image: ubuntu
+                    image: nginx
                     shell: Sh
-                    command: echo $test2
+                    command: echo hi
                   timeout: 1d 1h
           infrastructure:
             type: KubernetesDirect
