@@ -25,6 +25,18 @@ pipeline:
                     shell: Sh
                     command: echo hi
                   timeout: 1d 1h
+              - step:
+                  type: BuildAndPushDockerRegistry
+                  name: BuildAndPushDockerRegistry_1
+                  identifier: BuildAndPushDockerRegistry_1
+                  spec:
+                    connectorRef: account.test4
+                    repo: ng-labs
+                    tags:
+                      - "9"
+                    caching: false
+                    baseImageConnectorRefs:
+                      - account.test4
           infrastructure:
             type: KubernetesDirect
             spec:
