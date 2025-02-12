@@ -31,7 +31,7 @@ pipeline:
                   identifier: BuildAndPushDockerRegistry_1
                   spec:
                     connectorRef: account.test4
-                    repo: ng-labs
+                    repo: kartikeya9/ng-labs
                     tags:
                       - "9"
                     caching: false
