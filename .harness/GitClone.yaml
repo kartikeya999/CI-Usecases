@@ -20,7 +20,7 @@ pipeline:
                   name: Run_1
                   identifier: Run_1
                   spec:
-                    connectorRef: Registry
+                    connectorRef: account.test4
                     image: nginx
                     shell: Sh
                     command: echo hi
