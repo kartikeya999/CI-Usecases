@@ -27,8 +27,8 @@ pipeline:
           execution:
             steps:
               - stepGroup:
-                  name: stepgroup
-                  identifier: stepgroup
+                  name: stepgroup9
+                  identifier: stepgroup9
                   steps:
                     - step:
                         type: Run
