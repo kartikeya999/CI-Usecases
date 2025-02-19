@@ -41,7 +41,7 @@ pipeline:
                         spec:
                           connectorRef: account.harnessImage
                           image: docker:dind
-                          shell: Sh
+                          shell: Bash
                           privileged: true
                     - step:
                         type: Run
