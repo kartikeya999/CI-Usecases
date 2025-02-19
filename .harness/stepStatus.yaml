@@ -65,3 +65,9 @@ pipeline:
           sharedPaths:
             - /var/run
             - /var/lib/docker
+        variables:
+          - name: DockerHubPAT
+            type: Secret
+            description: ""
+            required: false
+            value: account.DockerPAT
