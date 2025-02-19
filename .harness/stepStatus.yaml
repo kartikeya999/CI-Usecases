@@ -13,9 +13,10 @@ pipeline:
         spec:
           cloneCodebase: false
           caching:
-            enabled: true
+            enabled: false
+            paths: []
           buildIntelligence:
-            enabled: true
+            enabled: false
           infrastructure:
             type: KubernetesDirect
             spec:
@@ -38,6 +39,7 @@ pipeline:
                           connectorRef: account.harnessImage
                           image: docker:dind
                           shell: Sh
+                          privileged: true
                     - step:
                         type: Run
                         name: Run_1
@@ -47,6 +49,7 @@ pipeline:
                           image: nginx
                           shell: Sh
                           command: docker ps -a
+                          privileged: true
                     - step:
                         type: Run
                         name: Run_2
@@ -56,3 +59,6 @@ pipeline:
                           image: nginx
                           shell: Sh
                           command: echo <+execution.steps.stepgroup9.steps.Run_1.status>
+          sharedPaths:
+            - /var/run
+            - /var/lib/docker
