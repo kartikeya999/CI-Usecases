@@ -38,7 +38,7 @@ pipeline:
                           connectorRef: account.harnessImage
                           image: nginx
                           shell: Sh
-                          command: echo hi
+                          command: docker ps -a
                     - step:
                         type: Run
                         name: Run_2
