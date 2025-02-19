@@ -48,7 +48,9 @@ pipeline:
                     connectorRef: account.harnessImage
                     image: docker:latest
                     shell: Sh
-                    command: docker ps -a
+                    command: |-
+                      sleep 25
+                      docker ps -a
                     privileged: true
                 contextType: Pipeline
               - stepGroup:
@@ -68,8 +70,13 @@ pipeline:
             - /var/run
             - /var/lib/docker
         variables:
-          - name: DockerHubPAT
+          - name: DOCKER_PASSWORD
             type: Secret
             description: ""
             required: false
             value: account.DockerPAT
+          - name: DOCKER_USERNAME
+            type: String
+            description: ""
+            required: false
+            value: kartikeya99
