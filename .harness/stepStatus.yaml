@@ -80,29 +80,3 @@ pipeline:
             description: ""
             required: false
             value: kartikeya99
-    - stage:
-        name: test
-        identifier: test
-        description: ""
-        type: CI
-        spec:
-          cloneCodebase: false
-          caching:
-            enabled: true
-          buildIntelligence:
-            enabled: true
-          platform:
-            os: Linux
-            arch: Amd64
-          runtime:
-            type: Cloud
-            spec: {}
-          execution:
-            steps:
-              - step:
-                  type: Run
-                  name: Run_1
-                  identifier: Run_1
-                  spec:
-                    shell: Sh
-                    command: echo
