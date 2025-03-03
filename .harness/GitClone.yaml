@@ -23,7 +23,7 @@ pipeline:
                     connectorRef: account.test4
                     image: nginx
                     shell: Sh
-                    command: echo hi
+                    command: sleep 500
                   timeout: 1d 1h
               - step:
                   type: BuildAndPushDockerRegistry
