@@ -35,8 +35,6 @@ pipeline:
                     tags:
                       - "9"
                     caching: false
-                    baseImageConnectorRefs:
-                      - account.test4
           infrastructure:
             type: KubernetesDirect
             spec:
