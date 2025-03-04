@@ -30,7 +30,7 @@ pipeline:
                   name: BuildAndPushDockerRegistry_1
                   identifier: BuildAndPushDockerRegistry_1
                   spec:
-                    connectorRef: account.test4
+                    connectorRef: account.harnessImage
                     repo: kartikeya9/ng-labs
                     tags:
                       - "9"
