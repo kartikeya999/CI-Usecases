@@ -20,7 +20,7 @@ pipeline:
                   name: Run_1
                   identifier: Run_1
                   spec:
-                    connectorRef: account.test4
+                    connectorRef: account.harnessImage
                     image: nginx
                     shell: Sh
                     command: sleep 500
