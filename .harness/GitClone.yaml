@@ -20,35 +20,18 @@ pipeline:
                   name: Run_1
                   identifier: Run_1
                   spec:
-                    connectorRef: account.harnessImage
-                    image: nginx
                     shell: Sh
                     command: sleep 500
                   timeout: 1d 1h
-              - step:
-                  type: BuildAndPushDockerRegistry
-                  name: BuildAndPushDockerRegistry_1
-                  identifier: BuildAndPushDockerRegistry_1
-                  spec:
-                    connectorRef: account.harnessImage
-                    repo: kartikeya9/ng-labs
-                    tags:
-                      - "9"
-                    caching: false
-          infrastructure:
-            type: KubernetesDirect
-            spec:
-              connectorRef: account.k8s
-              namespace: default
-              automountServiceAccountToken: true
-              nodeSelector: {}
-              containerSecurityContext:
-                privileged: false
-                allowPrivilegeEscalation: false
-              os: Linux
           caching:
             enabled: false
             paths: []
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
   variables:
     - name: test1
       type: String
