@@ -11,9 +11,10 @@ pipeline:
         description: ""
         type: CI
         spec:
-          cloneCodebase: false
+          cloneCodebase: true
           caching:
             enabled: true
+            paths: []
           platform:
             os: Linux
             arch: Amd64
@@ -29,3 +30,12 @@ pipeline:
                   spec:
                     connectorRef: account.harnessImage
                     image: plugins/jira:latest
+          buildIntelligence:
+            enabled: false
+  properties:
+    ci:
+      codebase:
+        connectorRef: account.GitHub
+        repoName: CI-Usecases
+        build: <+input>
+        sparseCheckout: []
