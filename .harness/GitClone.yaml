@@ -21,7 +21,7 @@ pipeline:
                   identifier: Run_1
                   spec:
                     shell: Sh
-                    command: sleep 500
+                    command: echo hi
                   timeout: 1d 1h
           caching:
             enabled: false
