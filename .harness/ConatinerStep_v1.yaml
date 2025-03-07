@@ -3,7 +3,7 @@ template:
   identifier: ConatinerStep
   versionLabel: v1
   type: Step
-  tags: {"test3"}
+  tags: {"test"}
   spec:
     type: Container
     spec:
