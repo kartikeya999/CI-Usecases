@@ -3,7 +3,7 @@ pipeline:
   identifier: MySQL
   projectIdentifier: CI
   orgIdentifier: default
-  tags: {}
+  tags: {test}
   stages:
     - stage:
         name: MySQL
