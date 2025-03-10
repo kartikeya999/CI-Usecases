@@ -24,6 +24,10 @@ pipeline:
                   spec:
                     connectorRef: account.harnessImage
                     image: plugins/jira:latest
+                    settings:
+                      CONNECT_KEY: <+secrets.getValue("account.jiraKey")>
+                      PROJECT: TJI
+                      INSTANCE: harness
           buildIntelligence:
             enabled: false
           infrastructure:
