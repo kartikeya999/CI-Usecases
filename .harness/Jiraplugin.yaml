@@ -28,6 +28,15 @@ pipeline:
                       CONNECT_KEY: <+secrets.getValue("account.jiraKey")>
                       PROJECT: TJI
                       INSTANCE: harness
+              - step:
+                  type: Run
+                  name: Run_1
+                  identifier: Run_1
+                  spec:
+                    connectorRef: <+input>
+                    image: nginx
+                    shell: Sh
+                    command: hi
           buildIntelligence:
             enabled: false
           infrastructure:
