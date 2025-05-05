@@ -24,7 +24,7 @@ pipeline:
                     command: |-
                       echo hi
                       printenv
-                      echo HARNESS_BUILD_ID
+                      echo $HARNESS_BUILD_ID
                       echo <+env.HARNESS_BUILD_ID>
                   timeout: 1d 1h
           caching:
