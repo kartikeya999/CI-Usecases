@@ -21,7 +21,11 @@ pipeline:
                   identifier: Run_1
                   spec:
                     shell: Sh
-                    command: echo hi
+                    command: |-
+                      echo hi
+                      printenv
+                      echo HARNESS_BUILD_ID
+                      echo <+env.HARNESS_BUILD_ID>
                   timeout: 1d 1h
           caching:
             enabled: false
