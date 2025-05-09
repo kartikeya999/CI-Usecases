@@ -20,6 +20,8 @@ pipeline:
                   name: Run_1
                   identifier: Run_1
                   spec:
+                    connectorRef: account.harnessImage
+                    image: nginx
                     shell: Sh
                     command: |-
                       echo hi
@@ -30,12 +32,14 @@ pipeline:
           caching:
             enabled: false
             paths: []
-          platform:
-            os: Linux
-            arch: Amd64
-          runtime:
-            type: Cloud
-            spec: {}
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: account.k8s
+              namespace: kartikeya-ng
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
   variables:
     - name: test1
       type: String
