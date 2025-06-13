@@ -40,6 +40,8 @@ pipeline:
               automountServiceAccountToken: true
               nodeSelector: {}
               os: Linux
+          buildIntelligence:
+            enabled: true
   variables:
     - name: test1
       type: String
