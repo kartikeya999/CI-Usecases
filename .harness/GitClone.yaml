@@ -32,16 +32,13 @@ pipeline:
           caching:
             enabled: false
             paths: []
-          infrastructure:
-            type: KubernetesDirect
-            spec:
-              connectorRef: account.k8s
-              namespace: kartikeya-ng
-              automountServiceAccountToken: true
-              nodeSelector: {}
-              os: Linux
           buildIntelligence:
             enabled: true
+          platform:
+            os: Linux
+          runtime:
+            type: Cloud
+            spec: {}
   variables:
     - name: test1
       type: String
