@@ -50,13 +50,13 @@ pipeline:
             type: String
             description: ""
             required: false
-            value: 0.0.1
+            value: "0.0.1-<+pipeline.sequenceId> "
   variables:
     - name: test1
       type: String
       description: ""
       required: false
-      value: "<+pipeline.sequenceId> "
+      value: test2
   properties:
     ci:
       codebase:
