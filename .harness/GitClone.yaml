@@ -25,6 +25,7 @@ pipeline:
                     shell: Sh
                     command: |-
                       echo hi
+                      echo <+pipeline.sequenceId> 
                       echo $IMAGE_TAG
                       printenv
                       echo $HARNESS_BUILD_ID
