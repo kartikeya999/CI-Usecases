@@ -49,7 +49,7 @@ pipeline:
             type: String
             description: ""
             required: false
-            value: 0.0.1-<+pipeline.sequenceId>
+            value: 0.0.1
   variables:
     - name: test1
       type: String
