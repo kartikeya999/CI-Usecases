@@ -49,13 +49,13 @@ pipeline:
             type: String
             description: ""
             required: false
-            value: 0.0.1-"<+pipeline.sequenceId>"
+            value: 0.0.1-<+pipeline.variables.test1>
   variables:
     - name: test1
       type: String
       description: ""
       required: false
-      value: p_private_key
+      value: "<+pipeline.sequenceId> "
   properties:
     ci:
       codebase:
