@@ -30,7 +30,7 @@ pipeline:
                       echo $HARNESS_BUILD_ID
                       echo <+env.HARNESS_BUILD_ID>
                     envVariables:
-                      IMAGE_TAG: <+stage.variables.VERSION>,latest
+                      IMAGE_TAG: <+stage.variables.VERSION>
                   timeout: 1d 1h
           caching:
             enabled: false
