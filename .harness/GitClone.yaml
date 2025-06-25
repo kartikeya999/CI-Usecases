@@ -36,9 +36,17 @@ pipeline:
             enabled: true
           platform:
             os: Linux
+            arch: Amd64
           runtime:
             type: Cloud
-            spec: {}
+            spec:
+              size: flex
+        variables:
+          - name: VERSION
+            type: String
+            description: ""
+            required: false
+            value: 0.0.1-<+pipeline.sequenceId>
   variables:
     - name: test1
       type: String
