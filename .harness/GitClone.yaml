@@ -33,6 +33,18 @@ pipeline:
                     envVariables:
                       IMAGE_TAG: <+stage.variables.VERSION>,latest
                   timeout: 1d 1h
+              - stepGroup:
+                  name: test
+                  identifier: test
+                  steps:
+                    - step:
+                        name: hdhd
+                        identifier: hdhd
+                        template:
+                          templateRef: tets
+                          versionLabel: v
+                  when:
+                    stageStatus: All
           caching:
             enabled: false
             paths: []
