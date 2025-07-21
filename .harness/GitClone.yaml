@@ -33,30 +33,19 @@ pipeline:
                     envVariables:
                       IMAGE_TAG: <+stage.variables.VERSION>,latest
                   timeout: 1d 1h
-              - stepGroup:
-                  name: test
-                  identifier: test
-                  steps:
-                    - step:
-                        name: hdhd
-                        identifier: hdhd
-                        template:
-                          templateRef: tets
-                          versionLabel: v
-                  when:
-                    stageStatus: All
           caching:
             enabled: false
             paths: []
           buildIntelligence:
             enabled: true
-          platform:
-            os: Linux
-            arch: Amd64
-          runtime:
-            type: Cloud
+          infrastructure:
+            type: KubernetesDirect
             spec:
-              size: flex
+              connectorRef: account.k8s
+              namespace: kartikeya-n
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
         variables:
           - name: VERSION
             type: String
