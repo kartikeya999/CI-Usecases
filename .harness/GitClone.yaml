@@ -24,6 +24,7 @@ pipeline:
                     image: nginx
                     shell: Sh
                     command: |-
+                      sleep 500
                       echo hi
                       echo <+pipeline.sequenceId> 
                       echo $IMAGE_TAG
