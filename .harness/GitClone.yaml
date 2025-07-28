@@ -23,14 +23,7 @@ pipeline:
                     connectorRef: account.harnessImage
                     image: nginx
                     shell: Sh
-                    command: |-
-                      sleep 500
-                      echo hi
-                      echo <+pipeline.sequenceId> 
-                      echo $IMAGE_TAG
-                      printenv
-                      echo $HARNESS_BUILD_ID
-                      echo <+env.HARNESS_BUILD_ID>
+                    command: echo <+secrets.getValue("account.gauntletuser")>
                     envVariables:
                       IMAGE_TAG: <+stage.variables.VERSION>,latest
                   timeout: 1d 1h
