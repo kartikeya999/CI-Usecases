@@ -46,6 +46,16 @@ pipeline:
             description: ""
             required: false
             value: <+"0.0.1-"+<+pipeline.sequenceId>>
+    - stage:
+        name: nest
+        identifier: nest
+        description: ""
+        type: Pipeline
+        spec:
+          org: default
+          pipeline: TestFF
+          project: KartikeyaFF
+          inputs: {}
   variables:
     - name: test1
       type: String
