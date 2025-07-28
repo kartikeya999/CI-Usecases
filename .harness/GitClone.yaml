@@ -32,14 +32,11 @@ pipeline:
             paths: []
           buildIntelligence:
             enabled: true
-          infrastructure:
-            type: KubernetesDirect
-            spec:
-              connectorRef: account.k8s
-              namespace: kartikeya-new
-              automountServiceAccountToken: true
-              nodeSelector: {}
-              os: Linux
+          platform:
+            os: Linux
+          runtime:
+            type: Cloud
+            spec: {}
         variables:
           - name: VERSION
             type: String
