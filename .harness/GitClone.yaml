@@ -17,7 +17,7 @@ pipeline:
             steps:
               - step:
                   type: Run
-                  name: Run_1
+                  name: RunName
                   identifier: Run_1
                   spec:
                     connectorRef: account.harnessImage
