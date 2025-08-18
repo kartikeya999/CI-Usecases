@@ -66,8 +66,4 @@ pipeline:
         repoName: CI-Usecases
         build: <+input>
         sparseCheckout: []
-        resources:
-          limits:
-            cpu: 1000m
-            memory: 2000Mi
   allowStageExecutions: true
