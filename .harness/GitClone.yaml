@@ -34,6 +34,7 @@ pipeline:
             enabled: true
           platform:
             os: Linux
+            arch: Amd64
           runtime:
             type: Cloud
             spec: {}
