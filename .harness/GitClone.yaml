@@ -23,7 +23,11 @@ pipeline:
                     connectorRef: account.harnessImage
                     image: nginx
                     shell: Sh
-                    command: echo hi
+                    command: |-
+                      docker pull nginx:latest
+                      docker run --name my-nginx -p 8080:80 -d nginx:latest
+                      docker ps
+                      docker logs my-nginx
                     envVariables:
                       IMAGE_TAG: <+stage.variables.VERSION>,latest
                   timeout: 1d 1h
