@@ -28,8 +28,6 @@ pipeline:
                   name: RunName
                   identifier: Run_1
                   spec:
-                    connectorRef: account.harnessImage
-                    image: nginx
                     shell: Sh
                     command: |-
                       docker pull nginx:latest
