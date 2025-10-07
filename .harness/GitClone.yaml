@@ -58,7 +58,8 @@ pipeline:
   properties:
     ci:
       codebase:
-        connectorRef: repogit
+        connectorRef: account.GitHub
+        repoName: CI-usecases
         build: <+input>
         sparseCheckout: []
   allowStageExecutions: true
