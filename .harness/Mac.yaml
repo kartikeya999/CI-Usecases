@@ -36,7 +36,11 @@ pipeline:
                   identifier: Run_1
                   spec:
                     shell: Sh
-                    command: mkdir test
+                    command: |-
+                      ls
+                      mkdir test
+                      ls
+                      pwd
               - step:
                   type: GitClone
                   name: GitClone_1
