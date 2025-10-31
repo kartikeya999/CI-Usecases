@@ -31,6 +31,18 @@ pipeline:
           execution:
             steps:
               - step:
+                  type: GitClone
+                  name: GitClone_1
+                  identifier: GitClone_1
+                  spec:
+                    connectorRef: account.GitHub
+                    repoName: CI-Usecases
+                    cloneDirectory: /private/tmp/harness/test
+                    build:
+                      type: branch
+                      spec:
+                        branch: main
+              - step:
                   type: Run
                   name: Run_1
                   identifier: Run_1
@@ -44,15 +56,3 @@ pipeline:
                       echo "after creating directory"
                       ls
                       pwd
-              - step:
-                  type: GitClone
-                  name: GitClone_1
-                  identifier: GitClone_1
-                  spec:
-                    connectorRef: account.GitHub
-                    repoName: CI-Usecases
-                    cloneDirectory: /private/tmp/harness/test
-                    build:
-                      type: branch
-                      spec:
-                        branch: main
