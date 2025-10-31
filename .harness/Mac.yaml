@@ -37,6 +37,7 @@ pipeline:
                   spec:
                     connectorRef: account.GitHub
                     repoName: CI-Usecases
+                    cloneDirectory: /harness/test
                     build:
                       type: branch
                       spec:
