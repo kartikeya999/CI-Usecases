@@ -31,6 +31,13 @@ pipeline:
           execution:
             steps:
               - step:
+                  type: Run
+                  name: Run_1
+                  identifier: Run_1
+                  spec:
+                    shell: Sh
+                    command: mkdir test
+              - step:
                   type: GitClone
                   name: GitClone_1
                   identifier: GitClone_1
@@ -42,10 +49,3 @@ pipeline:
                       type: branch
                       spec:
                         branch: main
-              - step:
-                  type: Run
-                  name: Run_1
-                  identifier: Run_1
-                  spec:
-                    shell: Sh
-                    command: echo Test
