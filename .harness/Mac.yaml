@@ -37,8 +37,11 @@ pipeline:
                   spec:
                     shell: Sh
                     command: |-
+                      pwd
                       ls
+                      echo "before creating directory"
                       mkdir test
+                      echo "after creating directory"
                       ls
                       pwd
               - step:
