@@ -11,7 +11,7 @@ pipeline:
         description: ""
         type: CI
         spec:
-          cloneCodebase: false
+          cloneCodebase: true
           caching:
             enabled: true
             paths: []
@@ -32,6 +32,7 @@ pipeline:
                   spec:
                     connectorRef: account.GitHub
                     repoName: CI-Usecases
+                    cloneDirectory: /harness/kartik
                     build:
                       type: branch
                       spec:
@@ -52,3 +53,10 @@ pipeline:
                       pwd
           buildIntelligence:
             enabled: false
+  properties:
+    ci:
+      codebase:
+        connectorRef: account.GitHub
+        repoName: CI-Usecases
+        build: <+input>
+        sparseCheckout: []
