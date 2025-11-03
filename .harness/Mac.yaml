@@ -4,12 +4,6 @@ pipeline:
   projectIdentifier: CI
   orgIdentifier: default
   tags: {}
-  properties:
-    ci:
-      codebase:
-        connectorRef: account.GitHub
-        repoName: CI-Usecases
-        build: <+input>
   stages:
     - stage:
         name: Mac
@@ -17,9 +11,10 @@ pipeline:
         description: ""
         type: CI
         spec:
-          cloneCodebase: true
+          cloneCodebase: false
           caching:
             enabled: true
+            paths: []
           platform:
             os: MacOS
             arch: Arm64
@@ -55,3 +50,5 @@ pipeline:
                       echo "after creating directory"
                       ls
                       pwd
+          buildIntelligence:
+            enabled: false
