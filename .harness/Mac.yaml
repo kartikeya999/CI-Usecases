@@ -26,6 +26,16 @@ pipeline:
           execution:
             steps:
               - step:
+                  type: Run
+                  name: Run_1
+                  identifier: Run_1
+                  spec:
+                    shell: Sh
+                    command: |-
+                      xcodes installed
+                      xcodes select 16.4
+                      xcrun simctl list runtimes
+              - step:
                   type: GitClone
                   name: GitClone_1
                   identifier: GitClone_1
@@ -37,20 +47,6 @@ pipeline:
                       type: branch
                       spec:
                         branch: main
-              - step:
-                  type: Run
-                  name: Run_1
-                  identifier: Run_1
-                  spec:
-                    shell: Sh
-                    command: |-
-                      pwd
-                      ls
-                      echo "before creating directory"
-                      mkdir test
-                      echo "after creating directory"
-                      ls
-                      pwd
           buildIntelligence:
             enabled: false
   properties:
