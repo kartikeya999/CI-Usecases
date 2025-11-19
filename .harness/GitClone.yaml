@@ -17,13 +17,6 @@ pipeline:
             steps:
               - step:
                   type: Run
-                  name: Run_2
-                  identifier: Run_2
-                  spec:
-                    shell: <+input>
-                    command: <+input>
-              - step:
-                  type: Run
                   name: RunName
                   identifier: Run_1
                   spec:
