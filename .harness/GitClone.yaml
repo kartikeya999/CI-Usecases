@@ -49,9 +49,6 @@ pipeline:
             description: ""
             required: false
             value: <+"0.0.1-"+<+pipeline.sequenceId>>
-        sendGitStatus:
-          enabled: false
-          name: pr-status
   variables:
     - name: test1
       type: String
