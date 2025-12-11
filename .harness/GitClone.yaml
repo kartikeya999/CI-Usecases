@@ -50,7 +50,7 @@ pipeline:
             required: false
             value: <+"0.0.1-"+<+pipeline.sequenceId>>
         sendGitStatus:
-          enabled: true
+          enabled: false
           name: pr-status
   variables:
     - name: test1
