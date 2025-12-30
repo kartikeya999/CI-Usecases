@@ -27,7 +27,9 @@ pipeline:
                       docker ps
                       docker logs my-nginx
                     envVariables:
-                      IMAGE_TAG: <+stage.variables.VERSION>,latest
+                      IMAGE_TAG: <+input>
+                      case1: <+input>.default(abc).selectManyFrom(abc,def,geh)
+                      case2: <+input>.default(test2).selectManyFrom(test1,test2,test3)
                   timeout: 1d 1h
           caching:
             enabled: false
