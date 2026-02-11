@@ -32,7 +32,14 @@ pipeline:
                       - parallel:
                           - insert:
                               identifier: insert2
-                              steps: <+input>
+                              steps:
+                                - step:
+                                    type: Run
+                                    name: Run_3
+                                    identifier: Run_3
+                                    spec:
+                                      shell: Sh
+                                      command: echo insert2
         - stage:
             name: Git-Clone
             identifier: GitClone
