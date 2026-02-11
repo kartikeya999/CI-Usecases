@@ -19,7 +19,14 @@ pipeline:
                 steps:
                   - insert:
                       identifier: test
-                      steps: <+input>
+                      steps:
+                        - step:
+                            type: Run
+                            name: Run_1
+                            identifier: Run_1
+                            spec:
+                              shell: Sh
+                              command: echo hi
     - stage:
         name: Git-Clone
         identifier: GitClone
