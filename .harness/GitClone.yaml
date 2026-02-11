@@ -17,16 +17,10 @@ pipeline:
             spec:
               execution:
                 steps:
-                  - insert:
-                      identifier: test
-                      steps:
-                        - step:
-                            type: Run
-                            name: Run_1
-                            identifier: Run_1
-                            spec:
-                              shell: Sh
-                              command: echo hi
+                  - parallel:
+                      - insert:
+                          identifier: test
+                          steps: <+input>
     - stage:
         name: Git-Clone
         identifier: GitClone
