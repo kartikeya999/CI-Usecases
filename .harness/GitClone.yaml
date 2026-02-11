@@ -7,6 +7,20 @@ pipeline:
     kartikeya: ""
   stages:
     - stage:
+        name: testInsert
+        identifier: testInsert
+        template:
+          templateRef: account.checkmarx
+          versionLabel: v1
+          templateInputs:
+            type: CI
+            spec:
+              execution:
+                steps:
+                  - insert:
+                      identifier: test
+                      steps: <+input>
+    - stage:
         name: Git-Clone
         identifier: GitClone
         description: ""
