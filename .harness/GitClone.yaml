@@ -29,6 +29,10 @@ pipeline:
                                     spec:
                                       shell: Sh
                                       command: echo test
+                      - parallel:
+                          - insert:
+                              identifier: insert2
+                              steps: <+input>
         - stage:
             name: Git-Clone
             identifier: GitClone
