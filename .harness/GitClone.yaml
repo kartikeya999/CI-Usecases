@@ -23,8 +23,7 @@ pipeline:
                     shell: Sh
                     command: |-
                       ls -la
-                      ls -la /.harness/
-                      tree /.harness/
+                      tree /harness/
                     envVariables:
                       IMAGE_TAG: <+input>
                       case1: <+input>.default(abc).selectManyFrom(abc,def,geh)
