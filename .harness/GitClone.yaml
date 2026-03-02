@@ -63,5 +63,5 @@ pipeline:
         repoName: CI-usecases
         build: <+input>
         sparseCheckout:
-          - .harness
+          - .harness/*
   allowStageExecutions: true
