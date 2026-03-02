@@ -89,6 +89,7 @@ pipeline:
                     type: KubernetesDirect
                     spec:
                       connectorRef: account.k8s
+                      namespace: kartikeya-new
             rollbackSteps: []
           serviceDependencies: []
         tags: {}
