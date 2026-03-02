@@ -70,6 +70,7 @@ pipeline:
                           repoName: CI-Usecases
                           sparseCheckout:
                             - .harness/sparse3
+                          preFetchCommand: git sparse-checkout add .harness/sparse3 --no-cone
                           build:
                             type: branch
                             spec:
