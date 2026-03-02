@@ -69,7 +69,7 @@ pipeline:
                           connectorRef: account.GitHub
                           repoName: CI-Usecases
                           sparseCheckout:
-                            - .harness/sparse1
+                            - .harness/sparse1/
                           build:
                             type: branch
                             spec:
