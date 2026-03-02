@@ -84,7 +84,7 @@ pipeline:
                           shell: Sh
                           command: |-
                             ls -la
-                            tree /harness/
+                            tree /harness/CI-Usecases
                   stepGroupInfra:
                     type: KubernetesDirect
                     spec:
