@@ -61,6 +61,5 @@ pipeline:
         connectorRef: account.GitHub
         repoName: CI-usecases
         build: <+input>
-        sparseCheckout:
-          - .harness
+        sparseCheckout: []
   allowStageExecutions: true
