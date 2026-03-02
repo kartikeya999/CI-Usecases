@@ -85,7 +85,7 @@ pipeline:
                           command: |-
                             ls -la
                             ls -la /harness/CI-Usecases
-                            ls -la /harness/CI-Usecases/sparse1
+                            ls -la /harness/CI-Usecases/.harness
                   stepGroupInfra:
                     type: KubernetesDirect
                     spec:
