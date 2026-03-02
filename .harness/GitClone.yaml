@@ -49,6 +49,49 @@ pipeline:
             description: ""
             required: false
             value: <+"0.0.1-"+<+pipeline.sequenceId>>
+    - stage:
+        name: sparse
+        identifier: sparse
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - stepGroup:
+                  name: sparse
+                  identifier: sparse
+                  steps:
+                    - step:
+                        type: GitClone
+                        name: GitClone_1
+                        identifier: GitClone_1
+                        spec:
+                          connectorRef: account.GitHub
+                          repoName: CI-Usecases
+                          sparseCheckout:
+                            - .harness
+                          build:
+                            type: branch
+                            spec:
+                              branch: main
+                    - step:
+                        type: Run
+                        name: Run_1
+                        identifier: Run_1
+                        spec:
+                          connectorRef: account.harnessImage
+                          image: nginx
+                          shell: Sh
+                          command: |-
+                            ls -la
+                            tree /harness/
+                  stepGroupInfra:
+                    type: KubernetesDirect
+                    spec:
+                      connectorRef: account.k8s
+            rollbackSteps: []
+          serviceDependencies: []
+        tags: {}
   variables:
     - name: test1
       type: String
@@ -61,5 +104,6 @@ pipeline:
         connectorRef: account.GitHub
         repoName: CI-usecases
         build: <+input>
-        sparseCheckout: []
+        sparseCheckout:
+          - .harness
   allowStageExecutions: true
