@@ -23,6 +23,8 @@ pipeline:
                     shell: Sh
                     command: |-
                       ls -la
+                      ls -la /harness/CI-Usecases
+                      ls -la /harness/CI-Usecases/.harness
                       tree /harness/
                     envVariables:
                       IMAGE_TAG: <+input>
@@ -107,5 +109,5 @@ pipeline:
         repoName: CI-usecases
         build: <+input>
         sparseCheckout:
-          - .harness
+          - .harness/sparse3
   allowStageExecutions: true
