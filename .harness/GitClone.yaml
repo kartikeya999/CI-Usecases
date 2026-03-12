@@ -38,10 +38,13 @@ pipeline:
             enabled: true
           platform:
             os: Linux
-            arch: Amd64
+            arch: Arm64
           runtime:
             type: Cloud
-            spec: {}
+            spec:
+              size: xlarge
+              imageSpec:
+                imageName: ubuntu-24
           sharedPaths:
             - /tmp/shared
             - /var/run
@@ -51,51 +54,6 @@ pipeline:
             description: ""
             required: false
             value: <+"0.0.1-"+<+pipeline.sequenceId>>
-    - stage:
-        name: sparse
-        identifier: sparse
-        description: ""
-        type: Custom
-        spec:
-          execution:
-            steps:
-              - stepGroup:
-                  name: sparse
-                  identifier: sparse
-                  steps:
-                    - step:
-                        type: GitClone
-                        name: GitClone_1
-                        identifier: GitClone_1
-                        spec:
-                          connectorRef: account.GitHub
-                          repoName: CI-Usecases
-                          sparseCheckout:
-                            - .harness/sparse3
-                          build:
-                            type: branch
-                            spec:
-                              branch: main
-                    - step:
-                        type: Run
-                        name: Run_1
-                        identifier: Run_1
-                        spec:
-                          connectorRef: account.harnessImage
-                          image: nginx
-                          shell: Sh
-                          command: |-
-                            ls -la
-                            ls -la /harness/CI-Usecases
-                            ls -la /harness/CI-Usecases/.harness
-                  stepGroupInfra:
-                    type: KubernetesDirect
-                    spec:
-                      connectorRef: account.k8s
-                      namespace: kartikeya-new
-            rollbackSteps: []
-          serviceDependencies: []
-        tags: {}
   variables:
     - name: test1
       type: String
@@ -108,6 +66,5 @@ pipeline:
         connectorRef: account.GitHub
         repoName: CI-usecases
         build: <+input>
-        sparseCheckout:
-          - .harness/sparse3
+        sparseCheckout: []
   allowStageExecutions: true
