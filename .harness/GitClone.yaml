@@ -91,7 +91,7 @@ pipeline:
     ci:
       codebase:
         connectorRef: account.GitHub
-        repoName: CI-usecases
+        repoName: gitops2-demo
         build: <+input>
         sparseCheckout: []
   allowStageExecutions: true
