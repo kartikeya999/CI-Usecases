@@ -54,33 +54,6 @@ pipeline:
             description: ""
             required: false
             value: <+"0.0.1-"+<+pipeline.sequenceId>>
-    - stage:
-        name: sto
-        identifier: sto
-        description: ""
-        type: SecurityTests
-        spec:
-          cloneCodebase: true
-          caching:
-            enabled: true
-            override: false
-          buildIntelligence:
-            enabled: true
-          platform:
-            os: Linux
-            arch: Amd64
-          runtime:
-            type: Cloud
-            spec: {}
-          execution:
-            steps:
-              - step:
-                  type: Run
-                  name: Run_1
-                  identifier: Run_1
-                  spec:
-                    shell: Sh
-                    command: echo test
   variables:
     - name: test1
       type: String
@@ -91,7 +64,7 @@ pipeline:
     ci:
       codebase:
         connectorRef: account.GitHub
-        repoName: gitops2-demo
+        repoName: CI-usecases
         build: <+input>
         sparseCheckout: []
   allowStageExecutions: true
