@@ -12,7 +12,7 @@ pipeline:
         description: ""
         type: CI
         spec:
-          cloneCodebase: true
+          cloneCodebase: false
           execution:
             steps:
               - step:
@@ -72,11 +72,4 @@ pipeline:
       description: ""
       required: false
       value: test2
-  properties:
-    ci:
-      codebase:
-        connectorRef: account.GitHub
-        repoName: CI-usecases
-        build: <+input>
-        sparseCheckout: []
   allowStageExecutions: true
