@@ -23,7 +23,7 @@ pipeline:
                     connectorRef: account.harnessImage
                     image: harnesscommunity/harness-ccm-recommendation-automation
                     shell: Bash
-                    command: file /usr/local/bin/python3
+                    command: sleep 1000
                     envVariables:
                       IMAGE_TAG: <+input>
                       case1: <+input>.default(abc).selectManyFrom(abc,def,geh)
