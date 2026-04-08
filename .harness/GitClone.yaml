@@ -33,19 +33,18 @@ pipeline:
             enabled: false
             paths: []
           buildIntelligence:
-            enabled: true
-          platform:
-            os: Linux
-            arch: Arm64
-          runtime:
-            type: Cloud
-            spec:
-              size: small
-              imageSpec:
-                imageName: ubuntu-latest
+            enabled: false
           sharedPaths:
             - /tmp/shared
             - /var/run
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: account.k8s
+              namespace: kartikeya-ng
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
         variables:
           - name: VERSION
             type: String
