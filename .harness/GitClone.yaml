@@ -20,12 +20,10 @@ pipeline:
                   name: RunName
                   identifier: Run_1
                   spec:
+                    connectorRef: account.harnessImage
+                    image: harnesscommunity/harness-ccm-recommendation-automation
                     shell: Sh
-                    command: |-
-                      ls -la
-                      ls -la /harness/CI-Usecases
-                      ls -la /harness/CI-Usecases/.harness
-                      tree /harness/
+                    command: file /usr/local/bin/python3
                     envVariables:
                       IMAGE_TAG: <+input>
                       case1: <+input>.default(abc).selectManyFrom(abc,def,geh)
