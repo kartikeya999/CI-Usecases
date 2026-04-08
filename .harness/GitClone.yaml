@@ -22,7 +22,7 @@ pipeline:
                   spec:
                     connectorRef: account.harnessImage
                     image: harnesscommunity/harness-ccm-recommendation-automation
-                    shell: Sh
+                    shell: Bash
                     command: file /usr/local/bin/python3
                     envVariables:
                       IMAGE_TAG: <+input>
