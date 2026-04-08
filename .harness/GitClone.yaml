@@ -21,7 +21,7 @@ pipeline:
                   identifier: Run_1
                   spec:
                     connectorRef: account.harnessImage
-                    image: harnesscommunity/harness-ccm-recommendation-automation
+                    image: harness/harness-cache-server:1.7.16-linux-arm64
                     shell: Bash
                     command: sleep 1000
                     envVariables:
