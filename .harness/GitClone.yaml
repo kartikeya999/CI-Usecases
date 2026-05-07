@@ -21,9 +21,9 @@ pipeline:
                   identifier: Run_1
                   spec:
                     connectorRef: account.harnessImage
-                    image: harness/harness-cache-server:1.7.16-linux-arm64
+                    image: nginx
                     shell: Bash
-                    command: sleep 1000
+                    command: echo <+codebase.repoUrl>
                     envVariables:
                       IMAGE_TAG: <+input>
                       case1: <+input>.default(abc).selectManyFrom(abc,def,geh)
