@@ -51,6 +51,32 @@ pipeline:
             description: ""
             required: false
             value: <+"0.0.1-"+<+pipeline.sequenceId>>
+    - stage:
+        name: Status-repro
+        identifier: Statusrepro
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
+                  spec:
+                    shell: Bash
+                    executionTarget: {}
+                    source:
+                      type: Inline
+                      spec:
+                        script: echo hi
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+        tags: {}
+        sendGitStatus:
+          enabled: true
+          name: Status-test
   variables:
     - name: test1
       type: String
