@@ -37,14 +37,12 @@ pipeline:
           sharedPaths:
             - /tmp/shared
             - /var/run
-          infrastructure:
-            type: KubernetesDirect
-            spec:
-              connectorRef: account.k8s
-              namespace: kartikeya-ng
-              automountServiceAccountToken: true
-              nodeSelector: {}
-              os: Linux
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
         variables:
           - name: VERSION
             type: String
