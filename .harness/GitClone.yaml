@@ -23,11 +23,49 @@ pipeline:
                     connectorRef: account.harnessImage
                     image: nginx
                     shell: Bash
-                    command: echo <+codebase.repoUrl>
+                    command: |-
+                      echo "Installing Harness CLI v3.3.0..."
+                      export HARNESS_CLI_VERSION="3.3.0"
+
+                      # Set API URL globally to ensure all CLI commands use app3
+                      export HARNESS_API_URL="https://app.harness.io"
+
+                      # Download and install Harness CLI with specific version
+                      curl -fsSL https://raw.githubusercontent.com/harness/harness-unified-cli/main/install.sh | VERSION=$HARNESS_CLI_VERSION sh
+                      export PATH="/root/.local/bin:$PATH"
+
+                      echo "Checking CLI version..."
+                      harness version
+
+                      echo "=== Authenticating with Harness CLI ==="
+                      harness auth login \
+                        --api-token "$HARNESS_API_KEY" \
+                        --api-url "$HARNESS_API_URL" \
+                        --account "$HARNESS_ACCOUNT_ID" \
+                        --org "$HARNESS_ORG" \
+                        --project "$HARNESS_PROJECT"
+
+                      echo ""
+                      echo "Verifying authentication..."
+                      harness auth status --profile ci
+
+                      echo ""
+                      echo "=== Exporting Harness_CLI Pipeline ==="
+                      harness get pipeline "$PIPELINE_TO_EXPORT" \
+                        --profile ci \
+                        --org "$HARNESS_ORG" \
+                        --project "$HARNESS_PROJECT" \
+                        --format yaml > git.yaml
+
+                      echo ""
+                      echo "=== Pipeline Export Successful ==="
+                      echo "Pipeline saved to: git.yaml"
                     envVariables:
-                      IMAGE_TAG: <+input>
-                      case1: <+input>.default(abc).selectManyFrom(abc,def,geh)
-                      case2: <+input>.default(test2).selectManyFrom(test1,test2,test3)
+                      HARNESS_API_KEY: <+secrets.getValue("account. CLI_SAT_token")>
+                      HARNESS_ACCOUNT_ID: OXdjLZ7ETs6AUZ1tUzVH3A
+                      HARNESS_ORG: default
+                      HARNESS_PROJECT: CI
+                      PIPELINE_TO_EXPORT: GitClone
                   timeout: 1d 1h
           caching:
             enabled: false
