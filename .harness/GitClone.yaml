@@ -39,6 +39,7 @@ pipeline:
 
                       echo "=== Authenticating with Harness CLI ==="
                       harness auth login \
+                        --profile ci \
                         --api-token "$HARNESS_API_KEY" \
                         --api-url "$HARNESS_API_URL" \
                         --account "$HARNESS_ACCOUNT_ID" \
