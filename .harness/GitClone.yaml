@@ -61,7 +61,7 @@ pipeline:
                       echo "=== Pipeline Export Successful ==="
                       echo "Pipeline saved to: git.yaml"
                     envVariables:
-                      HARNESS_API_KEY: <+secrets.getValue("account. CLI_SAT_token")>
+                      HARNESS_API_KEY: <+secrets.getValue("account.CLI_SAT_token")>
                       HARNESS_ACCOUNT_ID: OXdjLZ7ETs6AUZ1tUzVH3A
                       HARNESS_ORG: default
                       HARNESS_PROJECT: CI
