@@ -68,6 +68,12 @@ pipeline:
                       HARNESS_PROJECT: CI
                       PIPELINE_TO_EXPORT: GitClone
                   timeout: 1d 1h
+              - step:
+                  name: test
+                  identifier: test
+                  template:
+                    templateRef: account.git
+                    versionLabel: v1
           caching:
             enabled: false
             paths: []
