@@ -73,7 +73,7 @@ pipeline:
                   identifier: test
                   template:
                     templateRef: account.git
-                    versionLabel: v1
+                    versionLabel: v2
           caching:
             enabled: false
             paths: []
